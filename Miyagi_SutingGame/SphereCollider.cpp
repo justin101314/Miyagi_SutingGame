@@ -54,7 +54,6 @@ void SphereCollider::SetLocation(T_Location location) {
 //”¼Œa‚ÌŽæ“¾
 float SphereCollider::GetRadius()const {
 
-
 	return radius;
 
 }

@@ -11,6 +11,7 @@ GameMainScene::GameMainScene() {
 //•`‰æˆÈŠO‚ÌXV‚ðŽÀ‘•
 void GameMainScene::Update() {
 
+
 	player->Update();
 
 }
