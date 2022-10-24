@@ -1,7 +1,7 @@
 #include "DxLib.h"
 #include "SceneManager.h"
 #include "GameMainScene.h"
-
+#include "KeyManager.h"
 
 
 /***********************************************
@@ -26,22 +26,28 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SceneManager sceneMng(dynamic_cast<AbstractScene*> (new GameMainScene()));
 
 	// ゲームループ
-	while (ProcessMessage() == 0)  {
+	while (ProcessMessage() == 0) {
 
 
 		ClearDrawScreen();		// 画面の初期化
 
+
+		KeyManager::Update();
+		if (KeyManager::OnPressed(KEY_INPUT_A)) {
+			DrawFormatString(200, 200, 0xffffff, "成功");
+		}
+
 		//シンマネ処理
 
 		sceneMng.Update();//シーン更新
-		sceneMng.Draw();//シーン描画
+			sceneMng.Draw();//シーン描画
 
-		if (sceneMng.ChangeScene() == nullptr) { //シーン変更処理
+			if (sceneMng.ChangeScene() == nullptr) { //シーン変更処理
 
-			DxLib_End();	// DXライブラリ使用の終了処理
+				DxLib_End();	// DXライブラリ使用の終了処理
 
-			return 0;	// ソフトの終了
-		}
+				return 0;	// ソフトの終了
+			}
 
 
 		ScreenFlip();			// 裏画面の内容を表画面に反映
