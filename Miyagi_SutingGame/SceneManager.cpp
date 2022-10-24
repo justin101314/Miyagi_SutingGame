@@ -1,9 +1,9 @@
 #include "SceneManager.h"
-
+#include "KeyManager.h"
 
 void SceneManager::Update() {
 
-	
+	KeyManager::Update();
 	//現在のシーンのアップデート
 	mScene->Update();
 
