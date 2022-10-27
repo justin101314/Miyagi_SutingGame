@@ -18,7 +18,28 @@ Player::Player(T_Location location)
 void Player::Update() {
 
 	T_Location newLocation = GetLocation();
-	newLocation.x += 1;
+
+	if (KeyManager::OnKeyPressed(KEY_INPUT_W)) {
+
+		newLocation.y -= speed.y;
+
+	}
+	if (KeyManager::OnKeyPressed(KEY_INPUT_A)) {
+
+		newLocation.x -= speed.x;
+
+	}
+	if (KeyManager::OnKeyPressed(KEY_INPUT_S)) {
+
+		newLocation.y += speed.y;
+
+	}
+	if (KeyManager::OnKeyPressed(KEY_INPUT_D)) {
+
+		newLocation.x += speed.x;
+
+	}
+
 	SetLocation(newLocation);
 
 	int bulletCount;
@@ -30,6 +51,21 @@ void Player::Update() {
 		}
 
 		bullets[bulletCount]->Update();
+
+		//画面外に行ったら球を消す
+		if (bullets[bulletCount]->isScreenOut()) {
+
+			delete bullets[bulletCount];
+			bullets[bulletCount] = nullptr;
+			//配列を前に詰める
+
+			
+			/*if (bulletCount < 29) {
+                bullets[bulletCount] -= 1;
+			}*/
+
+		}
+
 	}
 
 

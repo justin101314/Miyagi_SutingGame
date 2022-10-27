@@ -11,5 +11,6 @@ public:
 	StraightBullets(T_Location location);
 	virtual void Update()override ;
 	virtual	void Draw()override ;
+	virtual bool isScreenOut() override;
 };
 
