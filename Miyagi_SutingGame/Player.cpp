@@ -59,11 +59,17 @@ void Player::Update() {
 			bullets[bulletCount] = nullptr;
 			//”z—ñ‚ð‘O‚É‹l‚ß‚é
 
-			
-			/*if (bulletCount < 29) {
-                bullets[bulletCount] -= 1;
-			}*/
+			/*while (bullets > 0) {
 
+				for (bullets = 0; bulletCount < 29; bullets++) {
+					 bulletCount=  bullets;
+
+
+					if (bulletCount < 29) {
+						bullets[bulletCount] -= 1;
+					}
+				}
+			}*/
 		}
 
 	}
