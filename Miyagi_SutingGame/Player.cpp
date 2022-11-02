@@ -55,27 +55,16 @@ void Player::Update() {
 		//画面外に行ったら球を消す
 		if (bullets[bulletCount]->isScreenOut()) {
 
-			delete bullets[bulletCount];
-			bullets[bulletCount] = nullptr;
-			//配列を前に詰める
 
-			/*while (bullets > 0) {
+			DeleteBullet(bulletCount);
+            bulletCount--;
 
-				for (bullets = 0; bulletCount < 29; bullets++) {
-					 bulletCount=  bullets;
-
-
-					if (bulletCount < 29) {
-						bullets[bulletCount] -= 1;
-					}
-				}
-			}*/
 		}
 
 	}
 
 
-	if ((KeyManager::OnMouseClicked(MOUSE_INPUT_LEFT) != 0)) {//左クリックで一つずつ発射
+	if ((KeyManager::OnMousePressed(MOUSE_INPUT_LEFT) != 0)) {//左クリックで一つずつ発射
 
 		if (bulletCount < 30 && bullets[bulletCount] == nullptr) {
 
@@ -102,7 +91,7 @@ void Player::Draw() {
 
 }
 
-void  Player::Hit() {
+void  Player::Hit(int damege) {
 
 
 }

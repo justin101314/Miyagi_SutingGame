@@ -14,10 +14,10 @@ public:
     Player(T_Location location);
 	void Update() override;
 	void Draw() override;
-	void Hit() override;
+	void Hit(int damege) override;
 	bool LifeCheck();
 	int GetScore();
-
+	
 
 };
 

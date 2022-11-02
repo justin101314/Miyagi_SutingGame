@@ -4,7 +4,7 @@
 
 GameMainScene::GameMainScene() {
 
-	T_Location location = T_Location{ 20,100 };
+	T_Location location = T_Location{ 320,440 };//初期位置
 	player = new Player(location);
 	enemy = new Enemy * [10];
 
@@ -27,8 +27,46 @@ void GameMainScene::Update() {
 			break;
 		}
 		enemy[enemyCount]->Update();
-
 	}
+
+	BulletsBase** bullet = player->GetBullets();
+
+
+	for (enemyCount = 0; enemyCount < 10; enemyCount++) {
+
+		if (enemy[enemyCount] == nullptr) {
+			break;
+		}
+
+		for (int bulletCount = 0; bulletCount < 30; bulletCount++) {
+
+			if (bullet[bulletCount] == nullptr) {
+				break;
+			}
+
+			if (enemy[enemyCount]->HitSphere(bullet[bulletCount])) {
+
+
+				//エネミーにプレイヤーの弾がヒットしている
+
+				//エネミーにダメージを与える
+				enemy[enemyCount]->Hit(bullet[bulletCount]->GetDamage());
+				 
+				//弾を削除
+				player->DeleteBullet(bulletCount);
+				bulletCount--;
+		
+				//エネミーのHPが0以下だったら、エネミーを削除する
+				if (enemy[enemyCount]->HpCheck()) {
+
+					//エネミーの削除
+
+
+				}
+			}
+		}
+	}
+
 }
 
 //描画に関することを実装

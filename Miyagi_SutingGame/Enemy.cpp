@@ -3,7 +3,7 @@
 
 Enemy::Enemy(T_Location location)
 	:CharaBase(location, 20.f, T_Location{ 0,0.5 })
-	,hp(10),point(10)
+	, hp(10), point(10)
 {
 
 
@@ -23,9 +23,16 @@ void Enemy::Draw() {
 
 
 }
-void Enemy::Hit() {
+void Enemy::Hit(int damege) {
 
+	if (0 < damege) {
 
+		hp -= damege;
+		if (hp < 0) {
+			hp = 0;
+		}
+
+	}
 
 
 }
