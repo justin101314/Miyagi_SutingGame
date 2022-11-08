@@ -1,6 +1,6 @@
 
 #include "GameMainScene.h"
-
+#include "DxLib.h"
 
 GameMainScene::GameMainScene() {
 
@@ -48,7 +48,6 @@ void GameMainScene::Update() {
 
 
 				//エネミーにプレイヤーの弾がヒットしている
-
 				//エネミーにダメージを与える
 				enemy[enemyCount]->Hit(bullet[bulletCount]->GetDamage());
 				 
@@ -59,8 +58,26 @@ void GameMainScene::Update() {
 				//エネミーのHPが0以下だったら、エネミーを削除する
 				if (enemy[enemyCount]->HpCheck()) {
 
-					//エネミーの削除
+					//スコアの加算
+					player->AddScore(enemy[enemyCount]->GetPoint());
+					//DrawFormatString(0,0,(255,255,255),,)
 
+					//エネミーの削除
+					delete enemy[enemyCount];
+					enemy[enemyCount] = nullptr;
+
+					//配列を前に詰める
+					for (int i = enemyCount + 1; i < 10; i++) {//例外処理防ぐため
+
+						if (enemy[i] == nullptr) {//NULLと一致したら抜ける
+							break;
+						}
+						enemy[i - 1] = enemy[i];//奥のものを手前の自分に入れる
+						enemy[i] = nullptr;
+					}
+
+					enemyCount--;
+					break;
 
 				}
 			}

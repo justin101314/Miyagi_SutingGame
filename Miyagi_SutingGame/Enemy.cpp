@@ -49,3 +49,4 @@ int Enemy::GetPoint() {
 	return point;
 
 }
+

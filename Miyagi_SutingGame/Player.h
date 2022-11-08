@@ -17,7 +17,7 @@ public:
 	void Hit(int damege) override;
 	bool LifeCheck();
 	int GetScore();
-	
+	void AddScore(int score);
 
 };
 

@@ -5,6 +5,8 @@
 class Enemy :public CharaBase
 
 {
+protected:
+
 private:
 
 	int hp;

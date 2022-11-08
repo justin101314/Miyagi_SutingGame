@@ -57,7 +57,7 @@ void Player::Update() {
 
 
 			DeleteBullet(bulletCount);
-            bulletCount--;
+			bulletCount--;
 
 		}
 
@@ -106,4 +106,11 @@ int  Player::GetScore() {
 
 	return score;
 
+}
+
+void Player::AddScore(int score) {
+
+	if (0 <= score) {
+		this->score += score;
+	}
 }
