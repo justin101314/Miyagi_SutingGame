@@ -60,7 +60,7 @@ void GameMainScene::Update() {
 
 					//スコアの加算
 					player->AddScore(enemy[enemyCount]->GetPoint());
-					//DrawFormatString(0,0,(255,255,255),,)
+					DrawFormatString(0, 0, (255, 255, 255), "スコア:%d");
 
 					//エネミーの削除
 					delete enemy[enemyCount];

@@ -9,7 +9,7 @@ void Recovery::Update() {
 
 void  Recovery::Draw() {
 
-	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 0));
+	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 255, 255));
 
 }
 
