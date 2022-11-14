@@ -2,7 +2,7 @@
 #include "Player.h"
 #include "StraightBullets.h"
 #include "KeyManager.h"
-
+#include "Recovery.h"
 
 Player::Player(T_Location location)
 	:CharaBase(location, 10.f, T_Location{ 2,2 }), score(0), life(11)
@@ -76,7 +76,7 @@ void Player::Update() {
 
 void Player::Draw() {
 
-//デバック用 プレイヤーのHP
+	//デバック用 プレイヤーのHP
 #define _DEBUG_MODE_
 
 #ifdef _DEBUG_MODE_
@@ -100,6 +100,24 @@ void Player::Draw() {
 }
 
 void  Player::Hit(int damege) {
+
+
+}
+
+void Player::Hit(ItemBase* item) {
+
+	switch (item->GetType())
+	{
+
+	case E_ITEM_TYPE::Heal:
+	{
+		Recovery* recovery = dynamic_cast<Recovery*>(item);
+		life += recovery->GetVolume();
+		break;
+	}
+	default:
+		break;
+	}
 
 
 }

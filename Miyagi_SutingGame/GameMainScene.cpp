@@ -112,15 +112,16 @@ void GameMainScene::Update() {
 			break;
 		}
 
+		//アイテムとプレイヤーのヒット
 		if (items[itemCount]->HitSphere(player)) {
 
+			//回復処理
+			player->Hit(items[itemCount]);
 
 			delete items[itemCount];
 			items[itemCount] = nullptr;
 
-
-
-
+			//前詰め
 			for (int i = itemCount; i < 10; i++) {
 
 				if (items[i] == nullptr) {

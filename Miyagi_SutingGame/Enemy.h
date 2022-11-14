@@ -21,5 +21,6 @@ public:
 	int GetPoint();
 
 
+
 };
 

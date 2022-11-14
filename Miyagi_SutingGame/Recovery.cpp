@@ -13,6 +13,8 @@ void Recovery::Update() {
 	newLocation.y += speed.y;
 	SetLocation(newLocation);
 
+
+
 }
 
 void  Recovery::Draw() {

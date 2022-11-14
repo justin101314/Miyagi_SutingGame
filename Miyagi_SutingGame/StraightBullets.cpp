@@ -7,6 +7,7 @@ StraightBullets::StraightBullets(T_Location location)
 {
 
 
+	
 }
 
 
