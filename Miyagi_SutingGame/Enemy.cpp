@@ -47,7 +47,7 @@ void  Enemy::Update() {
 
 		if (bulletCount < 30 && bullets[bulletCount] == nullptr) {
 
-			bullets[bulletCount] = new StraightBullets(GetLocation());
+			bullets[bulletCount] = new StraightBullets(GetLocation(),T_Location { 0, -2 });
 
 		}
 	}
