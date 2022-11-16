@@ -24,6 +24,8 @@ GameMainScene::GameMainScene() {
 
 		items[i] = nullptr;
 	}
+
+
 }
 //•`‰æˆÈŠO‚ÌXV‚ðŽÀ‘•
 void GameMainScene::Update() {
@@ -49,7 +51,7 @@ void GameMainScene::Update() {
 
 	BulletsBase** bullet = player->GetBullets();
 
-
+	
 	for (enemyCount = 0; enemyCount < 10; enemyCount++) {
 
 		if (enemy[enemyCount] == nullptr) {
@@ -60,12 +62,29 @@ void GameMainScene::Update() {
 
 
 			//“G‚Ì’e‚ðŽæ‚Á‚Ä‚­‚é
-			//for(’e‚ðƒ‹[ƒv‚·‚é
+			
+
+			//for(’e‚ðƒ‹[ƒv‚·‚é){
 			  //if(“G‚Ì’e‚ÆƒvƒŒƒCƒ„[‚Ì“–‚½‚è”»’è){
 			  //ƒvƒŒƒCƒ„[‚Éƒ_ƒ[ƒW‚ð—^‚¦‚é
 			  //“G‚Ì’e‚ðíœ‚·‚é
 		      //}
 			//}
+
+			for (int bulletCount = 0; bulletCount < 10; bulletCount++) {
+
+
+				if (enemy[enemyCount]->HitSphere(bullet[bulletCount])){
+
+					
+					player[bulletCount]->Hit(bullet[bulletCount]->GetDamage());
+
+					delete enemy[enemyCount];
+					enemy[enemyCount] = nullptr;
+				}
+
+			}
+
 			if (bullet[bulletCount] == nullptr) {
 				break;
 			}

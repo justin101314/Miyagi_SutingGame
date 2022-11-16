@@ -2,8 +2,8 @@
 #include "SceneManager.h"
 #include "GameMainScene.h"
 #include "KeyManager.h"
-//#define SCREEN_WIDTH 1280
-//#define SCREEN_HEIGHT 720
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 720
 
 /***********************************************
  * プログラムの開始
@@ -17,7 +17,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	ChangeWindowMode(TRUE);		// ウィンドウモードで起動
 
 
-	SetGraphMode(1280, 720, 16, FALSE);//画面サイズ変更
+	SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, 16, FALSE);//画面サイズ変更
 
 	if (DxLib_Init() == -1) return -1;	// DXライブラリの初期化処理
 
