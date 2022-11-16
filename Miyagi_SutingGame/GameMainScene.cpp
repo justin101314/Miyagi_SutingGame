@@ -2,6 +2,11 @@
 #include "GameMainScene.h"
 #include "DxLib.h"
 #include "Recovery.h"
+
+
+
+
+
 GameMainScene::GameMainScene() {
 
 	T_Location location = T_Location{ 320,440 };//初期位置
@@ -53,6 +58,14 @@ void GameMainScene::Update() {
 
 		for (int bulletCount = 0; bulletCount < 30; bulletCount++) {
 
+
+			//敵の弾を取ってくる
+			//for(弾をループする
+			  //if(敵の弾とプレイヤーの当たり判定){
+			  //プレイヤーにダメージを与える
+			  //敵の弾を削除する
+		      //}
+			//}
 			if (bullet[bulletCount] == nullptr) {
 				break;
 			}

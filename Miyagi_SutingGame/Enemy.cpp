@@ -43,14 +43,14 @@ void  Enemy::Update() {
 	}
 
 
-	if ((KeyManager::OnMousePressed(MOUSE_INPUT_LEFT) != 0)) {//左クリックで一つずつ発射
+	//if ((KeyManager::OnMousePressed(MOUSE_INPUT_LEFT) != 0)) {//左クリックで一つずつ発射
 
 		if (bulletCount < 30 && bullets[bulletCount] == nullptr) {
 
-			bullets[bulletCount] = new StraightBullets(GetLocation(),T_Location { 0, -2 });
+			bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0, -2 });
 
 		}
-	}
+	//}
 
 }
 void Enemy::Draw() {
