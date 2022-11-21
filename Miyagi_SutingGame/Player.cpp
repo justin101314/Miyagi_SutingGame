@@ -101,6 +101,16 @@ void Player::Draw() {
 
 void  Player::Hit(int damege) {
 
+	if (0 <= damege) {
+
+		life -= damege;
+		if (life <= 0) {
+			life = 0;
+		}
+
+	}
+
+
 
 }
 
