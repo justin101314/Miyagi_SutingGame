@@ -31,9 +31,6 @@ bool SphereCollider::HitSphere(const SphereCollider* collider)const {
 	//“–‚½‚è”»’è‚ÌŒ‹‰Ê
 	bool ret = (vectorLength < sumRadius);//bool‚Ç‚Á‚¿‚©‚ÉTRUE‚©FALSE‚ª“ü‚é
 
-
-	
-
 	return ret;
 }
 

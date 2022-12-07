@@ -4,7 +4,7 @@
 #include "KeyManager.h"
 
 Enemy::Enemy(T_Location location)
-	:CharaBase(location, 20.f, T_Location{ 0,0.5 })
+	:CharaBase(location, 20.f, T_Location{ 0,0.1 })//0.5
 	, hp(10), point(10)
 {
 
@@ -43,14 +43,12 @@ void  Enemy::Update() {
 	}
 
 
-	//if ((KeyManager::OnMousePressed(MOUSE_INPUT_LEFT) != 0)) {//¶ƒNƒŠƒbƒN‚Åˆê‚Â‚¸‚Â”­Ë
-
 		if (bulletCount < 30 && bullets[bulletCount] == nullptr) {
 
 			bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0, -2 });
 
 		}
-	//}
+	
 
 }
 void Enemy::Draw() {

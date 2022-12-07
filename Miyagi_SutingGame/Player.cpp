@@ -80,7 +80,8 @@ void Player::Draw() {
 #define _DEBUG_MODE_
 
 #ifdef _DEBUG_MODE_
-	DrawFormatString(10, 10, GetColor(255, 255, 255), "life=%d", life);
+	DrawFormatString(10, 10, GetColor(255, 255, 255), "Life=%d", life);
+	DrawFormatString(10, 30, GetColor(255, 255, 255), "Score=%d", score);
 #endif
 
 
