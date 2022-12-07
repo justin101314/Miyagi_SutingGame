@@ -1,9 +1,10 @@
 #pragma once
 #include "BulletsBase.h"
+
+
 class CircleBullet :public BulletsBase
     
 {
-
 
 
 public:

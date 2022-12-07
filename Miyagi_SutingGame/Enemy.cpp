@@ -2,10 +2,12 @@
 #include "Enemy.h"
 #include "StraightBullets.h"
 #include "KeyManager.h"
+#include "CircleBullet.h"
+
 
 Enemy::Enemy(T_Location location)
 	:CharaBase(location, 20.f, T_Location{ 0,0.1 })//0.5
-	, hp(10), point(10)
+	, hp(10), point(10),shotNum(0)
 {
 
 	bullets = new BulletsBase * [30];
@@ -16,9 +18,9 @@ Enemy::Enemy(T_Location location)
 }
 void  Enemy::Update() {
 
-	T_Location newLocation = GetLocation();
-	newLocation.y += speed.y;
-	SetLocation(newLocation);
+	//T_Location newLocation = GetLocation();
+	//newLocation.y += speed.y;
+	//SetLocation(newLocation);
 
 
 	int bulletCount;
@@ -45,7 +47,14 @@ void  Enemy::Update() {
 
 		if (bulletCount < 30 && bullets[bulletCount] == nullptr) {
 
-			bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0, -2 });
+			//’e–‹
+			bullets[bulletCount] =
+				new CircleBullet(GetLocation(), 2.f, (20 * shotNum));
+
+			shotNum++;
+
+
+			//bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0, -2 });
 
 		}
 	

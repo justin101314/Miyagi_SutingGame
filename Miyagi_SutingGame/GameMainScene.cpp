@@ -4,9 +4,6 @@
 #include "Recovery.h"
 
 
-
-
-
 GameMainScene::GameMainScene() {
 
 	T_Location location = T_Location{ 640,440 };//èâä˙à íu
@@ -17,7 +14,7 @@ GameMainScene::GameMainScene() {
 
 		enemy[i] = nullptr;
 	}
-	enemy[0] = new Enemy(T_Location{ 640,0 });
+	enemy[0] = new Enemy(T_Location{ 1280/2,720/2 });
 
 	items = new ItemBase * [10];
 	for (int i = 0; i < 10; i++) {

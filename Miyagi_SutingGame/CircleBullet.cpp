@@ -1,7 +1,6 @@
 #include "DxLib.h"
 #include "CircleBullet.h"
 #include "StraightBullets.h"
-
 #define _USE_MATH_DEFINES
 #include <math.h>
 
@@ -13,7 +12,7 @@ CircleBullet::CircleBullet(T_Location location,float speed, int degAngle)
 
 	int deg = degAngle % 360;
 	double rad = (M_PI / 180) * deg;
-	float x = (abs(deg) == 90 || deg == 270) ? 0 : cos(rad);
+	float x = (abs(deg) == 90 || abs(deg) == 270) ? 0 : cos(rad);//どちらかがTRUE(右側)かFALSE(左側)になったら場合によって選ばれる(参考演算子)
 	float y = sin(rad);
 
 	this->speed = T_Location{ (speed * x),(speed * y) };
@@ -24,8 +23,8 @@ CircleBullet::CircleBullet(T_Location location,float speed, int degAngle)
 void CircleBullet::Update() {
 
 	T_Location newLocation = GetLocation();
-	newLocation.y -= speed.y;
-	newLocation.x -= speed.x;
+	newLocation.y += speed.y;
+	newLocation.x += speed.x;
 	SetLocation(newLocation);
 
 }
