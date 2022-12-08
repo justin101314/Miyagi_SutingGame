@@ -10,9 +10,9 @@ CircleBullet::CircleBullet(T_Location location,float speed, int degAngle)
 
 {
 
-	int deg = degAngle % 360;
-	double rad = (M_PI / 180) * deg;
-	float x = (abs(deg) == 90 || abs(deg) == 270) ? 0 : cos(rad);//どちらかがTRUE(右側)かFALSE(左側)になったら場合によって選ばれる(参考演算子)
+	int deg = degAngle % 360;//360
+	double rad = (M_PI / 180) * deg;//180
+	float x = (abs(deg) == 90 || abs(deg) == 270) ? 0 : cos(rad);//90,270どちらかがTRUE(右側)かFALSE(左側)になったら場合によって選ばれる(参考演算子)
 	float y = sin(rad);
 
 	this->speed = T_Location{ (speed * x),(speed * y) };

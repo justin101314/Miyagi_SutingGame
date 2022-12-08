@@ -20,8 +20,9 @@ Enemy::Enemy(T_Location location)
 	, hp(10), point(10),shotNum(0)
 {
 
-	bullets = new BulletsBase * [30];
-	for (int i = 0; i < 30; i++) {
+	//30
+	bullets = new BulletsBase * [130];
+	for (int i = 0; i < 130; i++) {
 		bullets[i] = nullptr;
 	}
 
@@ -37,7 +38,7 @@ void  Enemy::Update() {
 
 
 	int bulletCount;
-	for (bulletCount = 0; bulletCount < 30; bulletCount++) {
+	for (bulletCount = 0; bulletCount < 130; bulletCount++) {
 
 		if (bullets[bulletCount] == nullptr) {
 
@@ -58,11 +59,11 @@ void  Enemy::Update() {
 	}
 
 
-		if (bulletCount < 30 && bullets[bulletCount] == nullptr) {
+		if (bulletCount < 130 && bullets[bulletCount] == nullptr) {
 
 			//’e–‹
 			bullets[bulletCount] =
-				new CircleBullet(GetLocation(), 2.f, (20 * shotNum));
+				new CircleBullet(GetLocation(), 2.f, (25 * shotNum));//2.f,20
 
 			shotNum++;
 
@@ -78,7 +79,7 @@ void Enemy::Draw() {
 	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 0));
 
 	int bulletCount;
-	for (bulletCount = 0; bulletCount < 30; bulletCount++) {
+	for (bulletCount = 0; bulletCount < 130; bulletCount++) {
 
 		if (bullets[bulletCount] == nullptr) {
 
