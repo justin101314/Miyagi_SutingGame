@@ -33,7 +33,8 @@ void CharaBase::DeleteBullet(int bulletNum) {
 		//}
 		//bulletCount--;
 
-		for (int i = bulletNum + 1; i < 30; i++) {//—áŠOˆ—–h‚®‚½‚ß
+		//‚¢‚¶‚Á‚½‚Æ‚±1
+		for (int i = bulletNum + 1; i < 1000; i++) {//—áŠOˆ—–h‚®‚½‚ß //30
 
 			if (bullets[i] == nullptr) {//NULL‚Æˆê’v‚µ‚½‚ç”²‚¯‚é
 				break;

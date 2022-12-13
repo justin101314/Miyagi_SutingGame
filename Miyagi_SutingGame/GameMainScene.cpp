@@ -14,7 +14,7 @@ GameMainScene::GameMainScene() {
 
 		enemy[i] = nullptr;
 	}
-	enemy[0] = new Enemy(T_Location{ 1280/2,720/2 });
+	enemy[0] = new Enemy(T_Location{ 100,200 });
 
 	items = new ItemBase * [10];
 	for (int i = 0; i < 10; i++) {
@@ -124,7 +124,8 @@ void GameMainScene::Update() {
 			}
 			bullet = enemy[enemyCount]->GetBullets();
 
-			for (int i = 0; i < 30; i++) {
+			//‚¢‚¶‚Á‚½‚Æ‚±2
+			for (int i = 0; i < 1000; i++) {//30
 
 				if (bullet[i] == nullptr) {
 

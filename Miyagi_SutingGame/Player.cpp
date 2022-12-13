@@ -43,7 +43,7 @@ void Player::Update() {
 	SetLocation(newLocation);
 
 	int bulletCount;
-	for (bulletCount = 0; bulletCount < 30; bulletCount++) {
+	for (bulletCount = 0; bulletCount < 1000; bulletCount++) {
 
 		if (bullets[bulletCount] == nullptr) {
 
@@ -62,7 +62,6 @@ void Player::Update() {
 		}
 
 	}
-
 
 	if ((KeyManager::OnMousePressed(MOUSE_INPUT_LEFT) != 0)) {//¶ƒNƒŠƒbƒN‚Åˆê‚Â‚¸‚Â”­ŽË
 
@@ -88,7 +87,7 @@ void Player::Draw() {
 	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 255));
 
 	int bulletCount;
-	for (bulletCount = 0; bulletCount < 30; bulletCount++) {
+	for (bulletCount = 0; bulletCount < 1000; bulletCount++) {
 
 		if (bullets[bulletCount] == nullptr) {
 
@@ -97,7 +96,7 @@ void Player::Draw() {
 
 		bullets[bulletCount]->Draw();
 	}
-
+	
 }
 
 void  Player::Hit(int damege) {
