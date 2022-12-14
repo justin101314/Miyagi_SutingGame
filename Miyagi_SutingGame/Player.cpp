@@ -8,8 +8,8 @@ Player::Player(T_Location location)
 	:CharaBase(location, 10.f, T_Location{ 2,2 }), score(0), life(11)
 {
 
-	bullets = new BulletsBase * [30];
-	for (int i = 0; i < 30; i++) {
+	bullets = new BulletsBase * [1000];
+	for (int i = 0; i < 1000; i++) {
 		bullets[i] = nullptr;
 	}
 
@@ -65,7 +65,7 @@ void Player::Update() {
 
 	if ((KeyManager::OnMousePressed(MOUSE_INPUT_LEFT) != 0)) {//¶ƒNƒŠƒbƒN‚Åˆê‚Â‚¸‚Â”­ŽË
 
-		if (bulletCount < 30 && bullets[bulletCount] == nullptr) {
+		if (bulletCount < 100 && bullets[bulletCount] == nullptr) {
 
 			bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0, 2 });
 

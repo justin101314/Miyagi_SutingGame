@@ -11,10 +11,14 @@ GameMainScene::GameMainScene() {
 	enemy = new Enemy * [10];
 
 	for (int i = 0; i < 10; i++) {
-
+		
 		enemy[i] = nullptr;
 	}
-	enemy[0] = new Enemy(T_Location{ 100,200 });
+
+	//‰º
+	enemy[0] = new Enemy(T_Location{ 640,5 });
+	
+
 
 	items = new ItemBase * [10];
 	for (int i = 0; i < 10; i++) {

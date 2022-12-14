@@ -8,16 +8,16 @@
 T_Location locations[4] = {
 
 	//à⁄ìÆêÊÇÃç¿ïW
-	{100,200},
-	{100,400},
-	{800,900},
-	{1000,1100},
+	{640,5},
+	{640,80},
+	{640,80},
+	{5,70},
 
 };
 
 Enemy::Enemy(T_Location location)
-	:CharaBase(location, 20.f, T_Location{ 0,1 })//0.5
-	, hp(10), point(10),shotNum(0)
+	:CharaBase(location, 20.f, T_Location{ 0,1, })//0.5
+	, hp(10), point(10), shotNum(0)
 {
 
 	//30
@@ -32,16 +32,23 @@ void  Enemy::Update() {
 	//T_Location newLocation = GetLocation();
 	//newLocation.y += speed.y;
 	//SetLocation(newLocation);
-		T_Location newLocation = GetLocation();
-		if (GetLocation().y != locations[1].y)
-		{
-			newLocation.y += speed.y;
-			SetLocation(newLocation);
-		}
+
+		//â∫à⁄ìÆ
+	T_Location newLocation = GetLocation();
+	if (GetLocation().y != locations[1].y)
+	{
+		newLocation.y += speed.y;
+		SetLocation(newLocation);
 
 
+	}
 
+	/*if (GetLocation().x == locations[2].x) {
 
+		newLocation.x -= speed.x;
+		SetLocation(newLocation);
+
+	}*/
 
 	int bulletCount;
 	for (bulletCount = 0; bulletCount < 1000; bulletCount++) {
@@ -63,19 +70,19 @@ void  Enemy::Update() {
 		}
 
 	}
-		if (bulletCount < 1000 && bullets[bulletCount] == nullptr) {
+	if (bulletCount < 1000 && bullets[bulletCount] == nullptr) {
 
-			//íeñã
-			bullets[bulletCount] =
-				new CircleBullet(GetLocation(), 2.f, (75 * shotNum));//2.f,20
+		//íeñã
+		bullets[bulletCount] =
+			new CircleBullet(GetLocation(), 2.f, (75 * shotNum));//2.f,20
 
-			shotNum++;
+		shotNum++;
 
 
-			//bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0, -2 });
+		//bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0, -2 });
 
-		}
-	
+	}
+
 
 }
 void Enemy::Draw() {
