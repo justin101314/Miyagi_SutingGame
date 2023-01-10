@@ -20,7 +20,7 @@ public:
 	virtual void Hit(int damege) override;
 	bool HpCheck();
 	int GetPoint();
-
+	void Move();
 
 
 };
