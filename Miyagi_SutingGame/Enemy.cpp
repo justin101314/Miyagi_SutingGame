@@ -5,23 +5,24 @@
 #include "CircleBullet.h"
 
 
-struct MoveInformation
+struct T_MoveInformation
 {
-	T_Location targetLocation;
 	int pattern;//動く動かない
-	int next;//次に行く配列
-	int waitTimeFlame;//座標パターンの時間
-	int attackpatern;//攻撃パターン
+	T_Location destination;
+	int nextArrayNum;//次に行く配列
+	int waitTimeFlameTime;//座標パターンの時間
+	int attackType;//攻撃パターン
 };
 
-MoveInformation moveInfo[10] = {
+T_MoveInformation moveInfo[5] = {
 
-	{640,   150,0,1, 0, 0},
-	{1200.4,150,0,2, 0, 0},
-	{  0,    0, 1,3,180,1},
-	{80.2,  150,0,4, 0, 2},
-	{  0,    0, 1,5, 180,1},
-	{1200.4,150,0,2, 0, 1},
+	{0,640,   150,1, 0, 0},//攻撃しない
+	{0,1200.4,150,2, 0, 2},//2で攻撃
+	{1,  0,    0, 3,300,1},//1で攻撃
+	{0,80.2,  150,4, 0, 2},//2で攻撃
+	{1,  0,    0, 1,300,1},//1で攻撃
+	//{1200.4,150,0,2, 0, 1},
+
 };
 
 T_Location locations[3] = {
@@ -42,9 +43,10 @@ int next[3] = {
 };
 
 int current = 0;
+int waitcount = 0;
 
 Enemy::Enemy(T_Location location)
-	:CharaBase(location, 20.f, T_Location{ 8,1, })//0.5
+	:CharaBase(location, 20.f, T_Location{5,4,})//0.5
 	, hp(10), point(10), shotNum(0)
 {
 
@@ -57,15 +59,31 @@ Enemy::Enemy(T_Location location)
 }
 void  Enemy::Update() {
 
+	
 	//T_Location newLocation = GetLocation();
 	//newLocation.y += speed.y;
 	//SetLocation(newLocation);
 
+	switch (moveInfo[current].pattern)
+	{
 
+	case 0:
+		Move();
+		break;
+	case 1:
+		waitcount++;
+		if (moveInfo[current].waitTimeFlameTime <= waitcount)
+		{
+			waitcount = 0;
+			current = moveInfo[current].nextArrayNum;
+		}
+		break;
 
-	Move();
+	default:
+		break;
+	}
 
-		//下移動
+	//下移動
 	/*T_Location newLocation = GetLocation();
 	if (GetLocation().y != locations[1].y)
 	{
