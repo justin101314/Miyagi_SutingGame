@@ -18,21 +18,21 @@ T_MoveInformation moveInfo[5] = {
 
 	{0,640,   150,1, 0, 0},//攻撃しない
 	{0,1200.4,150,2, 0, 2},//2で攻撃
-	{1,  0,    0, 3,300,1},//1で攻撃
+	{1,  0,    0, 3,150,1},//1で攻撃
 	{0,80.2,  150,4, 0, 2},//2で攻撃
-	{1,  0,    0, 1,300,1},//1で攻撃
+	{1,  0,    0, 1,150,1},//1で攻撃
 	//{1200.4,150,0,2, 0, 1},
 
 };
 
-T_Location locations[3] = {
-
-	//移動先の座標
-	{640,150},
-	{1200.4,150},
-	{80.2,150},
-
-};
+//T_Location moveInfo[3] = {
+//
+//	//移動先の座標
+//	{640,150},
+//	{1200.4,150},
+//	{80.2,150},
+//
+//};
 
 int next[3] = {
 
@@ -46,7 +46,7 @@ int current = 0;
 int waitcount = 0;
 
 Enemy::Enemy(T_Location location)
-	:CharaBase(location, 20.f, T_Location{5,4,})//0.5
+	:CharaBase(location, 20.f, T_Location{ 5,4, })//0.5 
 	, hp(10), point(10), shotNum(0)
 {
 
@@ -59,7 +59,7 @@ Enemy::Enemy(T_Location location)
 }
 void  Enemy::Update() {
 
-	
+
 	//T_Location newLocation = GetLocation();
 	//newLocation.y += speed.y;
 	//SetLocation(newLocation);
@@ -120,17 +120,38 @@ void  Enemy::Update() {
 		}
 
 	}
-	if (bulletCount < 1000 && bullets[bulletCount] == nullptr) {
+	if (moveInfo[current].attackType != 0) {
 
-		//弾幕
-		bullets[bulletCount] =
-			new CircleBullet(GetLocation(), 2.f, (75 * shotNum));//2.f,20
+		if (bulletCount < 1000 && bullets[bulletCount] == nullptr) {
 
-		shotNum++;
+			if (moveInfo[current].attackType == 1) {
+
+				bullets[bulletCount] = new StraightBullets
+				(GetLocation(), T_Location{ 0,-2 });
+
+			}
+
+			else if (moveInfo[current].attackType == 2) {
+
+				shotNum++;
+				bullets[bulletCount] = new CircleBullet
+				(GetLocation(), 2.f, (75 * shotNum));
+			}
 
 
-		//bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0, -2 });
 
+
+
+			//弾幕を作ろう
+			//bullets[bulletCount] =
+			//	new CircleBullet(GetLocation(), 2.f, (75 * shotNum));//2.f,20
+
+			//shotNum++;
+
+
+			//bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0, -2 });
+
+		}
 	}
 
 
@@ -185,32 +206,33 @@ void Enemy::Move() {
 	T_Location nextLocation = GetLocation();
 
 	//x,y が同じ場所にいたら
-	if ((nextLocation.y == locations[current].y) &&
-		(nextLocation.x == locations[current].x))
+	if ((nextLocation.y == moveInfo[current].destination.y) &&
+		(nextLocation.x == moveInfo[current].destination.x))
 	{
 
 		//次の座標に取得
-		current = next[current];
+		current = moveInfo[current].nextArrayNum;
+		return;
 	}
 	//目的地にいなかったとき
 	else {
 		//yがたどり着いていないとき
-		if (nextLocation.y != locations[current].y)
+		if (nextLocation.y != moveInfo[current].destination.y)
 		{
 
 			//現座標より目的地が大きいとき
-			if (nextLocation.y < locations[current].y)
+			if (nextLocation.y < moveInfo[current].destination.y)
 			{
 				//yに値を増やす
 				nextLocation.y += speed.y;
 
 				//今の座標よりも目的地が大きくて目的地よりも次の座標が大きい
-				if ((GetLocation().y <= locations[current].y) &&
-					(locations[current].y <= nextLocation.y))
+				if ((GetLocation().y <= moveInfo[current].destination.y) &&
+					(moveInfo[current].destination.y <= nextLocation.y))
 				{
 
 					//目的地を飛び越えた場合次の地点を上書き
-					nextLocation.y = locations[current].y;
+					nextLocation.y = moveInfo[current].destination.y;
 				}
 
 			}
@@ -220,31 +242,31 @@ void Enemy::Move() {
 				nextLocation.y -= speed.y;
 
 				//今の座標よりも目的地が大きくて目的地よりも次の座標が大きい
-				if ((nextLocation.y <= locations[current].y) &&
-					(locations[current].y <= GetLocation().y))
+				if ((nextLocation.y <= moveInfo[current].destination.y) &&
+					(moveInfo[current].destination.y <= GetLocation().y))
 
 				{
 
 					//目的地を飛び越えた場合次の地点を上書き
-					nextLocation.y = locations[current].y;
+					nextLocation.y = moveInfo[current].destination.y;
 				}
 			}
 
 		}
 
 		//xにたどり着いていないとき
-		if (nextLocation.x != locations[current].x)
+		if (nextLocation.x != moveInfo[current].destination.x)
 		{
 			//現座標より目的地が大きいとき
-			if (nextLocation.x < locations[current].x)
+			if (nextLocation.x < moveInfo[current].destination.x)
 			{
 				//xに値を増やす
 				nextLocation.x += speed.x;
-				if ((GetLocation().x <= locations[current].x) &&
-					(locations[current].x <= nextLocation.x))
+				if ((GetLocation().x <= moveInfo[current].destination.x) &&
+					(moveInfo[current].destination.x <= nextLocation.x))
 				{
 					//目的地を飛び越えた場合次の地点を上書き
-					nextLocation.x = locations[current].x;
+					nextLocation.x = moveInfo[current].destination.x;
 				}
 			}
 			//大きいとき
@@ -253,12 +275,12 @@ void Enemy::Move() {
 				nextLocation.x -= speed.x;
 
 				//今の座標よりも目的地が大きくて目的地よりも次の座標が大きい
-				if ((nextLocation.x <= locations[current].x) &&
-					(locations[current].y <= GetLocation().x))
+				if ((nextLocation.x <= moveInfo[current].destination.x) &&
+					(moveInfo[current].destination.y <= GetLocation().x))
 				{
 					//目的地を飛び越えた場合次の地点を上書き
-					nextLocation.x = locations[current].x;
-						
+					nextLocation.x = moveInfo[current].destination.x;
+
 				}
 			}
 
