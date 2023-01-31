@@ -46,7 +46,7 @@ int current = 0;
 int waitcount = 0;
 
 Enemy::Enemy(T_Location location)
-	:CharaBase(location, 20.f, T_Location{ 5,4, })//0.5 
+	:CharaBase(location, 50.f, T_Location{ 5,4, })//‹…‚Ì‘å‚«‚³//0.5 //“G‚Ì‹…‚Ì‘¬‚³
 	, hp(10), point(10), shotNum(0)
 {
 
@@ -137,10 +137,6 @@ void  Enemy::Update() {
 				bullets[bulletCount] = new CircleBullet
 				(GetLocation(), 2.f, (75 * shotNum));
 			}
-
-
-
-
 
 			//’e–‹‚ğì‚ë‚¤
 			//bullets[bulletCount] =
