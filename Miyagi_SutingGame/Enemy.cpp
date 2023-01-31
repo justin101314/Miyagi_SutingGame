@@ -8,7 +8,7 @@
 struct T_MoveInformation
 {
 	int pattern;//動く動かない
-	T_Location destination;
+	T_Location destination;//目的地
 	int nextArrayNum;//次に行く配列
 	int waitTimeFlameTime;//座標パターンの時間
 	int attackType;//攻撃パターン
@@ -45,10 +45,51 @@ int next[3] = {
 int current = 0;
 int waitcount = 0;
 
+//CSV
+void inputCSV() {
+
+	FILE* fp; //FILE型構造体
+	errno_t error; //fopen_sのエラーの確認
+	error = fopen_s(&fp, "../CSVEnemy/CSVEnemy.csv", "r");
+
+	if (errno != 0) {
+
+		//エラー発生
+		return;
+	}
+	else {
+		//ファイルを開いた
+		char line [100];
+		for (int i = 0; fgets(line, 100, fp) != NULL; i++) {
+			//while (fgets(line, 100, fp) != NULL) 
+
+			sscanf_s(line, "%d,%f,%f,%d,%d,%d",
+				&moveInfo[i].pattern,
+				&moveInfo[i].destination.x,
+				&moveInfo[i].destination.y,
+				&moveInfo[i].nextArrayNum,
+				&moveInfo[i].waitTimeFlameTime,
+				&moveInfo[i].attackType
+				);
+
+		}
+
+		return;
+	}
+
+
+	fclose(fp); //ファイルを閉じる
+
+}
+
+
+
 Enemy::Enemy(T_Location location)
 	:CharaBase(location, 50.f, T_Location{ 5,4, })//球の大きさ//0.5 //敵の球の速さ
 	, hp(10), point(10), shotNum(0)
 {
+	inputCSV();
+
 
 	//30
 	bullets = new BulletsBase * [1000];
