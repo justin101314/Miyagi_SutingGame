@@ -5,48 +5,24 @@
 #include "CircleBullet.h"
 
 
-struct T_MoveInformation
-{
-	int pattern;//動く動かない
-	T_Location destination;//目的地
-	int nextArrayNum;//次に行く配列
-	int waitTimeFlameTime;//座標パターンの時間
-	int attackType;//攻撃パターン
-};
-
 T_MoveInformation moveInfo[5] = {
 
-	{0,640,   150,1, 0, 0},//攻撃しない
-	{0,1200.4,150,2, 0, 2},//2で攻撃
-	{1,  0,    0, 3,150,1},//1で攻撃
-	{0,80.2,  150,4, 0, 2},//2で攻撃
-	{1,  0,    0, 1,150,1},//1で攻撃
-	//{1200.4,150,0,2, 0, 1},
+	
 
 };
 
-//T_Location moveInfo[3] = {
+
+//int next[3] = {
 //
-//	//移動先の座標
-//	{640,150},
-//	{1200.4,150},
-//	{80.2,150},
+//	1,
+//	2,
+//	1
 //
 //};
 
-int next[3] = {
-
-	1,
-	2,
-	1
-
-};
-
-int current = 0;
-int waitcount = 0;
 
 //CSV
-void inputCSV() {
+void Enemy::inputCSV() {
 
 	FILE* fp; //FILE型構造体
 	errno_t error; //fopen_sのエラーの確認
@@ -85,7 +61,7 @@ void inputCSV() {
 
 
 Enemy::Enemy(T_Location location)
-	:CharaBase(location, 50.f, T_Location{ 5,4, })//球の大きさ//0.5 //敵の球の速さ
+	:CharaBase(location, 50.f, T_Location{ 3.5,4, })//球の大きさ//0.5 //上空からの敵球の速さ
 	, hp(10), point(10), shotNum(0)
 {
 	inputCSV();
@@ -176,7 +152,7 @@ void  Enemy::Update() {
 
 				shotNum++;
 				bullets[bulletCount] = new CircleBullet
-				(GetLocation(), 2.f, (75 * shotNum));
+				(GetLocation(), 6.f, (75 * shotNum));//球の速さ初期時(2.f)
 			}
 
 			//弾幕を作ろう
