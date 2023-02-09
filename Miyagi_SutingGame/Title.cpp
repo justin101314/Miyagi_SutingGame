@@ -27,7 +27,7 @@ AbstractScene* Title::ChangeScene() {
 		if (KeyManager::OnKeyClicked(KEY_INPUT_Z)) {
 			return dynamic_cast<AbstractScene*> (new (GameMainScene));
 		}
-
+		break;
 	default:
 		break;
 	}

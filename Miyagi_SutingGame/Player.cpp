@@ -76,6 +76,8 @@ void Player::Update() {
 
 void Player::Draw() {
 
+
+
 	//デバック用 プレイヤーのHP
 #define _DEBUG_MODE_
 
@@ -84,7 +86,7 @@ void Player::Draw() {
 	DrawFormatString(10, 30, GetColor(255, 255, 255), "Score=%d", score);
 #endif
 
-
+	//DrawGraph(640,700,);
 	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 255));
 
 	int bulletCount;
@@ -108,6 +110,7 @@ void  Player::Hit(int damege) {
 		if (life <= 0) {
 			life = 0;
 		}
+
 
 	}
 
