@@ -157,6 +157,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="E_ITEM_TYPE.cpp" />
     <ClCompile Include="GameMainScene.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="ItemBase.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="E_ITEM_TYPE.h" />
     <ClInclude Include="GameMainScene.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="ItemBase.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="Player.h" />

@@ -3,6 +3,7 @@
 #include "StraightBullets.h"
 #include "KeyManager.h"
 #include "Recovery.h"
+#include "GameOver.h"
 
 Player::Player(T_Location location)
 	:CharaBase(location, 10.f, T_Location{ 2,2 }), score(0), life(11)
@@ -109,7 +110,6 @@ void  Player::Hit(int damege) {
 		}
 
 	}
-
 
 
 }

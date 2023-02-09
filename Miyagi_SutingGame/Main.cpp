@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 #include "GameMainScene.h"
 #include "KeyManager.h"
+#include "Title.h"
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 
@@ -27,8 +28,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SetFontSize(20);		// 文字サイズを設定
 
 	//シンマネオブジェクトの作成
-	SceneManager sceneMng(dynamic_cast<AbstractScene*> (new GameMainScene()));
-
+	SceneManager sceneMng(dynamic_cast<AbstractScene*> (new Title()));
+	
 	// ゲームループ
 	while (ProcessMessage() == 0) {
 

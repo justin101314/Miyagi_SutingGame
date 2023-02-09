@@ -3,7 +3,6 @@
 #include "DxLib.h"
 #include "Recovery.h"
 
-
 GameMainScene::GameMainScene() {
 
 	T_Location location = T_Location{ 640,440 };//初期位置
@@ -212,6 +211,7 @@ void GameMainScene::Draw() const {
 
 //シーン変更処理
 AbstractScene* GameMainScene::ChangeScene() {
+
 
 
 	return this;
