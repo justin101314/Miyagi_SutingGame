@@ -3,7 +3,7 @@
 #include "Title.h"
 #include "KeyManager.h"
 #include "GameMainScene.h"
-#include"Enemy.h"
+
 
 
 
@@ -27,6 +27,7 @@ AbstractScene* GameClear::ChangeScene() {
 		if (KeyManager::OnKeyClicked(KEY_INPUT_Z)) {
 			return dynamic_cast<AbstractScene*> (new (Title));
 		}
+	
 		break;
 	default:
 		break;

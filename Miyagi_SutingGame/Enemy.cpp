@@ -3,7 +3,7 @@
 #include "StraightBullets.h"
 #include "KeyManager.h"
 #include "CircleBullet.h"
-
+#include "CharaBase.h"
 
 T_MoveInformation moveInfo[5] = {
 

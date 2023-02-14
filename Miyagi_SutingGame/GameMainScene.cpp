@@ -4,7 +4,7 @@
 #include "Recovery.h"
 #include "GameOver.h"
 #include "GameClear.h"
-//#include "Player.h"
+
 
 GameMainScene::GameMainScene() {
 
@@ -32,7 +32,7 @@ GameMainScene::GameMainScene() {
 }
 
 
-int a = 1;//エネミー用変数
+int gameover = 1;//ゲームオーバー用変数
 
 //描画以外の更新を実装
 void GameMainScene::Update() {
@@ -85,7 +85,7 @@ void GameMainScene::Update() {
 				//エネミーのHPが0以下だったら、エネミーを削除する
 				if (enemy[enemyCount]->HpCheck()) {
 
-					a = 0;//エネミー変数に0を代入
+					gameover = 0;//ゲームオーバー用変数に0を代入
 
 					for (int i = 0; i < 10; i++) {
 
@@ -227,11 +227,11 @@ AbstractScene* GameMainScene::ChangeScene() {
 	}
 
 
-	if ( a == 0)
+	if ( gameover == 0)
 	{
-
+		gameover = 1;//メインへ
 		return dynamic_cast<AbstractScene*> (new (GameClear));
-
+		
 	}
 
 

@@ -3,11 +3,13 @@
 #include "StraightBullets.h"
 #include "KeyManager.h"
 #include "Recovery.h"
-#include "GameOver.h"
+
 
 Player::Player(T_Location location)
 	:CharaBase(location, 10.f, T_Location{ 2,2 }), score(0), life(11)
 {
+
+	playerimage = LoadGraph("images/jet1.png");
 
 	bullets = new BulletsBase * [1000];
 	for (int i = 0; i < 1000; i++) {
@@ -86,8 +88,10 @@ void Player::Draw() {
 	DrawFormatString(10, 30, GetColor(255, 255, 255), "Score=%d", score);
 #endif
 
-	//DrawGraph(640,700,);
-	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 255));
+
+	DrawGraph(GetLocation().x, GetLocation().y,GetRadius(), playerimage); 
+
+	//DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 255));
 
 	int bulletCount;
 	for (bulletCount = 0; bulletCount < 1000; bulletCount++) {
@@ -138,10 +142,6 @@ bool  Player::LifeCheck() {
 
 	bool ret = (life <= 0);
 
-	/*if(life <= 0){
-
-		return dynamic_cast<AbstractScene*> (new (GameOver)); 
-	} */
 	
 	return ret;
 }

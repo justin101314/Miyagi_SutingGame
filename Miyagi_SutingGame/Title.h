@@ -6,7 +6,7 @@ class Title : public AbstractScene
 
 {
 public:
-	//int title = 0;
+	
 
 public:
 
