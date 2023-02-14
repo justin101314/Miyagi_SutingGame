@@ -220,9 +220,9 @@ void GameMainScene::Draw() const {
 //シーン変更処理
 AbstractScene* GameMainScene::ChangeScene() {
 
-	if (player ->LifeCheck()) 
+	if (player ->LifeCheck()) //HPが0になったら
 	{
-
+		//ゲームオーバーへ
 		return dynamic_cast<AbstractScene*> (new (GameOver));
 
 	}

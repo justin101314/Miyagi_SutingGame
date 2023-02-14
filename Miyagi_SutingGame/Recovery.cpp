@@ -19,7 +19,10 @@ void Recovery::Update() {
 
 void  Recovery::Draw() {
 
-	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 255, 0));
+	//ƒAƒCƒeƒ€‰æ‘œ
+	recoveryimages = LoadGraph("images/RecoveryAgents.png");
+	DrawRotaGraph(GetLocation().x, GetLocation().y,1,0,recoveryimages,TRUE);
+	//DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 255, 0));
 
 }
 

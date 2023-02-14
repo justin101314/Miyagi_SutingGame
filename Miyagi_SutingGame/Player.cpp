@@ -9,8 +9,6 @@ Player::Player(T_Location location )
 	:CharaBase(location, 10.f, T_Location{ 2,2 }), score(0), life(11)
 {
 
-	
-
 	bullets = new BulletsBase * [1000];
 	for (int i = 0; i < 1000; i++) {
 		bullets[i] = nullptr;
@@ -77,9 +75,6 @@ void Player::Update() {
 }
 
 void Player::Draw() {
-
-
-
 
 	//デバック用 プレイヤーのHP
 #define _DEBUG_MODE_

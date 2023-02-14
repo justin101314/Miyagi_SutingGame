@@ -8,6 +8,7 @@ StraightBullets::StraightBullets(T_Location location, T_Location speed)
 	:BulletsBase(location, 5.f, 1, speed)
 {
 
+	enemystraightB = LoadGraph("images/enemystraight.png");
 
 
 }
@@ -24,7 +25,8 @@ void StraightBullets::Update() {
 
 void StraightBullets::Draw() {
 
-	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 0, 255));
+	DrawRotaGraph(GetLocation().x, GetLocation().y,1,0,  enemystraightB,TRUE);
+	//DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 0, 255));
 
 }
 

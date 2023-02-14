@@ -7,7 +7,8 @@
 class StraightBullets : public BulletsBase
  
 {
-
+private:
+	int enemystraightB = 0;
 
 public:
 

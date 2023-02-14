@@ -9,6 +9,8 @@ CircleBullet::CircleBullet(T_Location location,float speed, int degAngle)
 	:BulletsBase(location, 5.f, 1, T_Location{ 0,0 })
 
 {
+	//エネミー弾画像
+	enemybulletimages = LoadGraph("images/enemybullet.png");
 
 	int deg = degAngle % 360;//360
 	double rad = (M_PI / 180) * deg;//180
@@ -32,7 +34,9 @@ void CircleBullet::Update() {
 
 void CircleBullet::Draw() {
 
-	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 0, 255));
+	//エネミー弾書き込み
+	DrawRotaGraph(GetLocation().x, GetLocation().y,1,0, enemybulletimages,TRUE);
+	// DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 0, 255));
 
 }
 

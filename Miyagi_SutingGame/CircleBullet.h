@@ -8,6 +8,8 @@ class CircleBullet :public BulletsBase
 
 
 public:
+
+    int enemybulletimages = 0;
     CircleBullet(T_Location location
         ,float speed, int degAngle);
 
