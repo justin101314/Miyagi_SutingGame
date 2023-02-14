@@ -3,11 +3,12 @@
 
 
 //コンストラクタ
-SphereCollider::SphereCollider(T_Location location, float radius)
+SphereCollider::SphereCollider(T_Location location, float radius )
 {
 	this->location.x = location.x;
 	this->location.y = location.y;
 	this->radius = radius;
+	
 }
 
 //SphereCollider型同士の当たり判定

@@ -171,7 +171,11 @@ void  Enemy::Update() {
 }
 void Enemy::Draw() {
 
-	DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 0));
+	enemyimages = LoadGraph("images/Jet2.png");
+
+	DrawRotaGraph(GetLocation().x, GetLocation().y,2,0, enemyimages, TRUE);
+
+	//DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 0));
 
 	int bulletCount;
 	for (bulletCount = 0; bulletCount < 1000; bulletCount++) {

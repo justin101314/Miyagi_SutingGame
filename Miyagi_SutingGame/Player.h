@@ -7,7 +7,7 @@ private:
 
 	int score;
 	int life;
-	int playerimage;
+	int playerimages = 0;
 	
 public:
 

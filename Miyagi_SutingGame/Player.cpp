@@ -5,11 +5,11 @@
 #include "Recovery.h"
 
 
-Player::Player(T_Location location)
+Player::Player(T_Location location )
 	:CharaBase(location, 10.f, T_Location{ 2,2 }), score(0), life(11)
 {
 
-	playerimage = LoadGraph("images/jet1.png");
+	
 
 	bullets = new BulletsBase * [1000];
 	for (int i = 0; i < 1000; i++) {
@@ -80,6 +80,7 @@ void Player::Draw() {
 
 
 
+
 	//デバック用 プレイヤーのHP
 #define _DEBUG_MODE_
 
@@ -88,8 +89,9 @@ void Player::Draw() {
 	DrawFormatString(10, 30, GetColor(255, 255, 255), "Score=%d", score);
 #endif
 
+	playerimages = LoadGraph("images/Jet1.png");
 
-	DrawGraph(GetLocation().x, GetLocation().y,GetRadius(), playerimage); 
+	DrawRotaGraph(GetLocation().x, GetLocation().y,1,0, playerimages,TRUE);
 
 	//DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 255));
 

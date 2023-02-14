@@ -12,6 +12,7 @@ private:
 	Player* player;
 	Enemy** enemy;
 	ItemBase** items;
+	
 public:
 
 	GameMainScene();

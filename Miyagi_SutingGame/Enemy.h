@@ -22,6 +22,7 @@ private:
 	int shotNum;
 	int current = 0;
 	int waitcount = 0;
+	int enemyimages = 0;
 
 public:
 	Enemy(T_Location location);

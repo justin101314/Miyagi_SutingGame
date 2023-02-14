@@ -8,6 +8,7 @@
 
 GameMainScene::GameMainScene() {
 
+
 	T_Location location = T_Location{ 640,440 };//‰ŠúˆÊ’u
 	player = new Player(location);
 	enemy = new Enemy * [10];
