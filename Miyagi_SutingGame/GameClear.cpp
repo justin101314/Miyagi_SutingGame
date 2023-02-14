@@ -1,23 +1,25 @@
 #include "DxLib.h"
-#include "GameOver.h"
+#include "GameClear.h"
 #include "Title.h"
 #include "KeyManager.h"
 #include "GameMainScene.h"
+#include"Enemy.h"
 
 
-void GameOver::Update() {
+
+void GameClear::Update() {
 
 
 
 }
 
-void GameOver::Draw() const {
+void GameClear::Draw() const {
 
-	DrawString(640, 320, "GAMEOVER",0xffffff);
-	DrawString(640, 340, "Z_KEYを押してタイトルへ", 0xffffff);
+	DrawString(640, 320, "GAMECLEAR", 0xff);
+	DrawString(640, 340, "Z_KEYを押してタイトルへ", 0xff);
 }
 
-AbstractScene* GameOver::ChangeScene() {
+AbstractScene* GameClear::ChangeScene() {
 
 	switch (_FIRST)
 	{
@@ -33,3 +35,5 @@ AbstractScene* GameOver::ChangeScene() {
 	return this;
 
 }
+
+

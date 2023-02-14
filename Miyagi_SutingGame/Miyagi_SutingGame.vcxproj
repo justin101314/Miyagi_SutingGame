@@ -156,6 +156,7 @@
     <ClCompile Include="CircleBullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="E_ITEM_TYPE.cpp" />
+    <ClCompile Include="GameClear.cpp" />
     <ClCompile Include="GameMainScene.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="ItemBase.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="common.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="E_ITEM_TYPE.h" />
+    <ClInclude Include="GameClear.h" />
     <ClInclude Include="GameMainScene.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="ItemBase.h" />

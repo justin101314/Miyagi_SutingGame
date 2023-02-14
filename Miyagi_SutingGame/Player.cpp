@@ -114,7 +114,6 @@ void  Player::Hit(int damege) {
 
 	}
 
-
 }
 
 void Player::Hit(ItemBase* item) {
@@ -138,6 +137,12 @@ void Player::Hit(ItemBase* item) {
 bool  Player::LifeCheck() {
 
 	bool ret = (life <= 0);
+
+	/*if(life <= 0){
+
+		return dynamic_cast<AbstractScene*> (new (GameOver)); 
+	} */
+	
 	return ret;
 }
 

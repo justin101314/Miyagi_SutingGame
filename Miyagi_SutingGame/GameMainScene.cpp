@@ -2,6 +2,9 @@
 #include "GameMainScene.h"
 #include "DxLib.h"
 #include "Recovery.h"
+#include "GameOver.h"
+#include "GameClear.h"
+//#include "Player.h"
 
 GameMainScene::GameMainScene() {
 
@@ -27,12 +30,15 @@ GameMainScene::GameMainScene() {
 
 
 }
+
+
+int a = 1;//エネミー用変数
+
 //描画以外の更新を実装
 void GameMainScene::Update() {
 
 
 	player->Update();
-
 	int enemyCount;
 	for (enemyCount = 0; enemyCount < 10; enemyCount++) {
 
@@ -61,9 +67,6 @@ void GameMainScene::Update() {
 		for (int bulletCount = 0; bulletCount < 30; bulletCount++) {
 
 
-
-
-
 			if (bullet[bulletCount] == nullptr) {
 				break;
 			}
@@ -82,6 +85,7 @@ void GameMainScene::Update() {
 				//エネミーのHPが0以下だったら、エネミーを削除する
 				if (enemy[enemyCount]->HpCheck()) {
 
+					a = 0;//エネミー変数に0を代入
 
 					for (int i = 0; i < 10; i++) {
 
@@ -145,6 +149,8 @@ void GameMainScene::Update() {
 					enemy[enemyCount]->DeleteBullet(i);
 					i--;
 				}
+
+			
 			}
 		}
 	}
@@ -207,11 +213,26 @@ void GameMainScene::Draw() const {
 		}
 		items[i]->Draw();
 	}
+
 }
 
 //シーン変更処理
 AbstractScene* GameMainScene::ChangeScene() {
 
+	if (player ->LifeCheck()) 
+	{
+
+		return dynamic_cast<AbstractScene*> (new (GameOver));
+
+	}
+
+
+	if ( a == 0)
+	{
+
+		return dynamic_cast<AbstractScene*> (new (GameClear));
+
+	}
 
 
 	return this;

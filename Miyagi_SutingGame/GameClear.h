@@ -1,12 +1,8 @@
 #pragma once
 #include "AbstractScene.h"
-
-class GameOver :public AbstractScene
-	
+class GameClear :public AbstractScene
 {
-
 public:
-	
 
 public:
 
@@ -16,6 +12,4 @@ public:
 	AbstractScene* ChangeScene()override;
 
 };
-
-
 
