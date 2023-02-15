@@ -230,8 +230,8 @@ AbstractScene* GameMainScene::ChangeScene() {
 
 	if ( gameover == 0)
 	{
-		gameover = 1;//ƒƒCƒ“‚Ö
-		return dynamic_cast<AbstractScene*> (new (GameClear));
+		//gameover = 1;//ƒƒCƒ“‚Ö
+		//return dynamic_cast<AbstractScene*> (new (GameClear));
 		
 	}
 

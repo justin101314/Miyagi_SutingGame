@@ -2,8 +2,8 @@
 #include "Recovery.h"
 
 
-Recovery::Recovery(T_Location location)
-	:ItemBase(location, 5.f, E_ITEM_TYPE:: Heal, T_Location{ 0,2 }), volume (2)
+Recovery::Recovery(T_Location location)//‰ñ•œ//‰ñ•œ–òT_Location(ˆÊ’u)
+	:ItemBase(location, 6.f, E_ITEM_TYPE:: Heal, T_Location{ 0,1 }), volume (2)
 {
 
 }

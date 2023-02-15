@@ -15,8 +15,8 @@ void GameClear::Update() {
 
 void GameClear::Draw() const {
 
-	DrawString(640, 320, "GAMECLEAR", 0xff);
-	DrawString(640, 340, "Z_KEYを押してタイトルへ", 0xff);
+	DrawString(620, 320, "GAMECLEAR", GetColor(255,215,0));
+	DrawString(620, 340, "Z_KEYを押してタイトルへ", 0xffffff);
 }
 
 AbstractScene* GameClear::ChangeScene() {

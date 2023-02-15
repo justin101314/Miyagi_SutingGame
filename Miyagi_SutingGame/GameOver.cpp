@@ -13,8 +13,8 @@ void GameOver::Update() {
 
 void GameOver::Draw() const {
 
-	DrawString(640, 320, "GAMEOVER",0xffffff);
-	DrawString(640, 340, "Z_KEYを押してタイトルへ", 0xffffff);
+	DrawString(610, 320, "GAMEOVER",GetColor(220,20,60));
+	DrawString(610, 340, "Z_KEYを押してタイトルへ", 0xffffff);
 }
 
 AbstractScene* GameOver::ChangeScene() {

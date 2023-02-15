@@ -61,7 +61,7 @@ void Enemy::inputCSV() {
 
 
 Enemy::Enemy(T_Location location)
-	:CharaBase(location, 50.f, T_Location{ 3.5,4, })//‹…‚Ì‘å‚«‚³//0.5 //ã‹ó‚©‚ç‚Ì“G‹…‚Ì‘¬‚³
+	:CharaBase(location, 50.f, T_Location{ 3.5,4, })//¨T_Location//‹…‚Ì‘å‚«‚³//0.5 //ã‹ó‚©‚ç‚Ì“G‹…‚Ì‘¬‚³
 	, hp(10), point(10), shotNum(0)
 {
 	inputCSV();
