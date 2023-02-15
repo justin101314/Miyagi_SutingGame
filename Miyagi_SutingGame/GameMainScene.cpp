@@ -5,6 +5,9 @@
 #include "GameOver.h"
 #include "GameClear.h"
 
+//#define _SECOND_STAGE 0
+//#include "KeyManager.h"
+
 
 GameMainScene::GameMainScene() {
 
@@ -18,10 +21,9 @@ GameMainScene::GameMainScene() {
 		enemy[i] = nullptr;
 	}
 
-	//下
+	//下 //エネミー数1体
 	enemy[0] = new Enemy(T_Location{ 640,5 });
-	
-
+	//enemy[1] = new Enemy(T_Location{ 1280,5 });
 
 	items = new ItemBase * [10];
 	for (int i = 0; i < 10; i++) {
@@ -32,8 +34,7 @@ GameMainScene::GameMainScene() {
 
 }
 
-
-int gameover = 1;//ゲームオーバー用変数
+int gameclear = 1;//ゲームクリア確認用変数
 
 //描画以外の更新を実装
 void GameMainScene::Update() {
@@ -86,7 +87,7 @@ void GameMainScene::Update() {
 				//エネミーのHPが0以下だったら、エネミーを削除する
 				if (enemy[enemyCount]->HpCheck()) {
 
-					gameover = 0;//ゲームオーバー用変数に0を代入
+					gameclear = 0;//ゲームクリア用変数に0を代入
 
 					for (int i = 0; i < 10; i++) {
 
@@ -225,15 +226,29 @@ AbstractScene* GameMainScene::ChangeScene() {
 		//ゲームオーバーへ
 		return dynamic_cast<AbstractScene*> (new (GameOver));
 
+	
 	}
 
-
-	if ( gameover == 0)
+	//ゲームクリア確認が一致したら↓
+	if ( gameclear == 0)
 	{
 		//gameover = 1;//メインへ
 		//return dynamic_cast<AbstractScene*> (new (GameClear));
+
+		
+		/*enemy[1] = new Enemy(T_Location{ 1280,5 });*/
+	
 		
 	}
+
+	/*switch (_SECOND_STAGE)
+	{
+	case 0:
+		if (KeyManager::OnMouseClicked(KEY_INPUT_2)) { return dynamic_cast <AbstractScene*>(new Scene()); }
+
+	default:
+		break;
+	}*/
 
 
 	return this;

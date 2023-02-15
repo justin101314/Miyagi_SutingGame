@@ -40,12 +40,12 @@ void Enemy::inputCSV() {
 			//while (fgets(line, 100, fp) != NULL) 
 
 			sscanf_s(line, "%d,%f,%f,%d,%d,%d",
-				&moveInfo[i].pattern,
-				&moveInfo[i].destination.x,
-				&moveInfo[i].destination.y,
-				&moveInfo[i].nextArrayNum,
-				&moveInfo[i].waitTimeFlameTime,
-				&moveInfo[i].attackType
+				&moveInfo[i].pattern,//動く動かない//A
+				&moveInfo[i].destination.x,//目的地.x//B
+				&moveInfo[i].destination.y,//目的地.y//C
+				&moveInfo[i].nextArrayNum,//次に行く配列//D
+				&moveInfo[i].waitTimeFlameTime,//座標パターンの時間//E
+				&moveInfo[i].attackType//攻撃パターン//F
 				);
 
 		}
@@ -137,10 +137,12 @@ void  Enemy::Update() {
 		}
 
 	}
+	//////動きのパターンなど//////
 	if (moveInfo[current].attackType != 0) {
 
 		if (bulletCount < 1000 && bullets[bulletCount] == nullptr) {
 
+			//下攻撃
 			if (moveInfo[current].attackType == 1) {
 
 				bullets[bulletCount] = new StraightBullets
@@ -152,8 +154,16 @@ void  Enemy::Update() {
 
 				shotNum++;
 				bullets[bulletCount] = new CircleBullet
-				(GetLocation(), 6.f, (75 * shotNum));//球の速さ初期時(2.f)
+				(GetLocation(), 6.f, (2.f * shotNum));//球の速さ初期時(2.f)//手裏剣型75.f
 			}
+
+			/*else if(moveInfo[current].attackType == 1) {
+
+				bullets[bulletCount] = new StraightBullets
+				(GetLocation(), T_Location{ 0,45 });
+
+			}*/
+
 
 			//弾幕を作ろう
 			//bullets[bulletCount] =
