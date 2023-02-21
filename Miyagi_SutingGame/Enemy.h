@@ -25,14 +25,14 @@ private:
 	int enemyimages = 0;
 
 public:
-	Enemy(T_Location location);
+	Enemy(T_Location location ,const char* pass);
 	virtual void  Update() override;
 	virtual void Draw() override;
 	virtual void Hit(int damege) override;
 	bool HpCheck();
 	int GetPoint();
 	void Move();
-	void inputCSV();
+	void inputCSV(const char* pass);
 
 };
 

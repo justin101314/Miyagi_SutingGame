@@ -7,7 +7,7 @@
 
 T_MoveInformation moveInfo[5] = {
 
-	
+
 
 };
 
@@ -22,11 +22,11 @@ T_MoveInformation moveInfo[5] = {
 
 
 //CSV
-void Enemy::inputCSV() {
+void Enemy::inputCSV(const char* pass) {
 
 	FILE* fp; //FILE型構造体
 	errno_t error; //fopen_sのエラーの確認
-	error = fopen_s(&fp, "../CSVEnemy/CSVEnemy.csv", "r");
+	error = fopen_s(&fp, pass, "r");
 
 	if (errno != 0) {
 
@@ -35,7 +35,7 @@ void Enemy::inputCSV() {
 	}
 	else {
 		//ファイルを開いた
-		char line [100];
+		char line[100];
 		for (int i = 0; fgets(line, 100, fp) != NULL; i++) {
 			//while (fgets(line, 100, fp) != NULL) 
 
@@ -46,7 +46,7 @@ void Enemy::inputCSV() {
 				&moveInfo[i].nextArrayNum,//次に行く配列//D
 				&moveInfo[i].waitTimeFlameTime,//座標パターンの時間//E
 				&moveInfo[i].attackType//攻撃パターン//F
-				);
+			);
 
 		}
 
@@ -60,11 +60,11 @@ void Enemy::inputCSV() {
 
 
 
-Enemy::Enemy(T_Location location)
-	:CharaBase(location, 50.f, T_Location{ 3.5,4, })//→T_Location//球の大きさ//0.5 //上空からの敵球の速さ
+Enemy::Enemy(T_Location location ,const char* pass)
+	:CharaBase(location, 59.f, T_Location{ 3.5,4, })//→T_Location//球の大きさ//0.5 //上空からの敵球の速さ
 	, hp(10), point(10), shotNum(0)
 {
-	inputCSV();
+	inputCSV(pass);
 
 
 	//30
@@ -150,24 +150,27 @@ void  Enemy::Update() {
 
 			}
 
+			
 			else if (moveInfo[current].attackType == 2) {
 
 				shotNum++;
 				bullets[bulletCount] = new CircleBullet
-				(GetLocation(), 6.f, (2.f * shotNum));//球の速さ初期時(2.f)//手裏剣型75.f
+				(GetLocation(), 6.f, (2.f * shotNum));//球の速さ初期時(2.f)
 			}
 
-			/*else if(moveInfo[current].attackType == 1) {
 
-				bullets[bulletCount] = new StraightBullets
-				(GetLocation(), T_Location{ 0,45 });
+			else if (moveInfo[current].attackType == 3) {
 
-			}*/
+				shotNum++;
+				bullets[bulletCount] = new CircleBullet
+				(GetLocation(), 6.f, (75.f * shotNum));//手裏剣型75.f
+
+			}
 
 
 			//弾幕を作ろう
 			//bullets[bulletCount] =
-			//	new CircleBullet(GetLocation(), 2.f, (75 * shotNum));//2.f,20
+			//	new CircleBullet(GetLocation(), 2.f, (1 * shotNum));//2.f,20
 
 			//shotNum++;
 
@@ -183,7 +186,7 @@ void Enemy::Draw() {
 
 	enemyimages = LoadGraph("images/Jet2.png");
 
-	DrawRotaGraph(GetLocation().x, GetLocation().y,2,0, enemyimages, TRUE);
+	DrawRotaGraph(GetLocation().x, GetLocation().y, 2, 0, enemyimages, TRUE);
 
 	//DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 0));
 

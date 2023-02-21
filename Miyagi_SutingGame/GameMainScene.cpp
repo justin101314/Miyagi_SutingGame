@@ -22,8 +22,8 @@ GameMainScene::GameMainScene() {
 	}
 
 	//下 //エネミー数1体
-	enemy[0] = new Enemy(T_Location{ 640,5 });
-	//enemy[1] = new Enemy(T_Location{ 1280,5 });
+	enemy[0] = new Enemy(T_Location{ 640,5 },"../CSVEnemy/CSVEnemy.csv");
+	enemy[1] = new Enemy(T_Location{ 1280,5 },"../CSVEnemy/CSVEnemy.csv");
 
 	items = new ItemBase * [10];
 	for (int i = 0; i < 10; i++) {
@@ -63,10 +63,11 @@ void GameMainScene::Update() {
 	for (enemyCount = 0; enemyCount < 10; enemyCount++) {
 
 		if (enemy[enemyCount] == nullptr) {
+
 			break;
 		}
-
-		for (int bulletCount = 0; bulletCount < 30; bulletCount++) {
+		
+		for (int bulletCount = 0; bulletCount < 100; bulletCount++) {
 
 
 			if (bullet[bulletCount] == nullptr) {

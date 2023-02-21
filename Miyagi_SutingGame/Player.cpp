@@ -6,9 +6,9 @@
 
 
 Player::Player(T_Location location )
-	:CharaBase(location, 20.f, T_Location{ 2,2 }), score(0), life(11)
+	:CharaBase(location, 20.f, T_Location{ 5,5 }), score(0), life(50)
 {
-
+	
 	bullets = new BulletsBase * [1000];
 	for (int i = 0; i < 1000; i++) {
 		bullets[i] = nullptr;
@@ -44,7 +44,7 @@ void Player::Update() {
 	SetLocation(newLocation);
 
 	int bulletCount;
-	for (bulletCount = 0; bulletCount < 1000; bulletCount++) {
+	for (bulletCount = 0; bulletCount < 100; bulletCount++) {
 
 		if (bullets[bulletCount] == nullptr) {
 

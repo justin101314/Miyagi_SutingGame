@@ -5,7 +5,7 @@
 
 
 StraightBullets::StraightBullets(T_Location location, T_Location speed)
-	:BulletsBase(location, 5.f, 1, speed)
+	:BulletsBase(location, 50.f, 100, speed)
 {
 
 	enemystraightB = LoadGraph("images/enemystraight.png");
