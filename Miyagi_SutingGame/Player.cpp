@@ -8,7 +8,8 @@
 Player::Player(T_Location location )
 	:CharaBase(location, 20.f, T_Location{ 5,5 }), score(0), life(50)
 {
-	
+	playerimages = LoadGraph("images/Jet1.png");
+
 	bullets = new BulletsBase * [1000];
 	for (int i = 0; i < 1000; i++) {
 		bullets[i] = nullptr;
@@ -64,7 +65,7 @@ void Player::Update() {
 
 	}
 
-	if ((KeyManager::OnMousePressed(MOUSE_INPUT_LEFT) != 0)) {//左クリックで一つずつ発射
+	if ((KeyManager::OnMouseClicked(MOUSE_INPUT_LEFT) != 0)) {//左クリックで一つずつ発射
 
 		if (bulletCount < 100 && bullets[bulletCount] == nullptr) {
 
@@ -80,11 +81,13 @@ void Player::Draw() {
 #define _DEBUG_MODE_
 
 #ifdef _DEBUG_MODE_
+
+	
 	DrawFormatString(10, 10, GetColor(255, 255, 255), "Life=%d", life);
-	DrawFormatString(10, 30, GetColor(255, 255, 255), "Score=%d", score);
+	DrawFormatString(10, 40, GetColor(255, 255, 255), "Score=%d", score);
 #endif
 
-	playerimages = LoadGraph("images/Jet1.png");
+	
 
 	DrawRotaGraph(GetLocation().x, GetLocation().y,1,0, playerimages,TRUE);
 

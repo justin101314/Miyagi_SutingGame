@@ -199,6 +199,10 @@ void GameMainScene::Update() {
 //描画に関することを実装
 void GameMainScene::Draw() const {
 
+
+	//フォントサイズ
+	SetFontSize(40);
+
 	player->Draw();
 
 	for (int enemyCount = 0; enemyCount < 10; enemyCount++) {

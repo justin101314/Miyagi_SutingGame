@@ -61,11 +61,14 @@ void Enemy::inputCSV(const char* pass) {
 
 
 Enemy::Enemy(T_Location location ,const char* pass)
-	:CharaBase(location, 59.f, T_Location{ 3.5,4, })//¨T_Location//‹…‚Ì‘å‚«‚³//0.5 //ã‹ó‚©‚ç‚Ì“G‹…‚Ì‘¬‚³
+	:CharaBase(location, 49.f, T_Location{ 3.5,4, })//¨T_Location//‹…‚Ì‘å‚«‚³//0.5 //ã‹ó‚©‚ç‚Ì“G‹…‚Ì‘¬‚³
 	, hp(10), point(10), shotNum(0)
 {
-	inputCSV(pass);
+	
+	
+	enemyimages = LoadGraph("images/Jet2.png");
 
+	inputCSV(pass);
 
 	//30
 	bullets = new BulletsBase * [1000];
@@ -184,7 +187,7 @@ void  Enemy::Update() {
 }
 void Enemy::Draw() {
 
-	enemyimages = LoadGraph("images/Jet2.png");
+	
 
 	DrawRotaGraph(GetLocation().x, GetLocation().y, 2, 0, enemyimages, TRUE);
 
