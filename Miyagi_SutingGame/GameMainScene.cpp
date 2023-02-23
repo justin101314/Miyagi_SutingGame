@@ -6,7 +6,7 @@
 #include "GameClear.h"
 
 //#define _SECOND_STAGE 0
-//#include "KeyManager.h"
+#include "KeyManager.h"
 
 
 GameMainScene::GameMainScene() {
@@ -38,6 +38,20 @@ int gameclear = 1;//ゲームクリア確認用変数
 
 //描画以外の更新を実装
 void GameMainScene::Update() {
+
+	/*if (KeyManager::OnKeyClicked(KEY_INPUT_RIGHT == true) {
+
+		select_num++;
+
+			if(select_num > 2)select_num = 0;
+	}
+
+	if (KeyManager::OnKeyClicked(KEY_INPUT_LEFT == true) {
+
+		select_num--;
+
+		if (select_num < 0) select_num = 2;
+	}*/
 
 
 	player->Update();
@@ -237,8 +251,9 @@ AbstractScene* GameMainScene::ChangeScene() {
 	//ゲームクリア確認が一致したら↓
 	if ( gameclear == 0)
 	{
-		//gameover = 1;//メインへ
-		//return dynamic_cast<AbstractScene*> (new (GameClear));
+		
+		gameclear = 1;//メインへ
+		return dynamic_cast<AbstractScene*> (new GameClear());
 
 		
 		/*enemy[1] = new Enemy(T_Location{ 1280,5 });*/

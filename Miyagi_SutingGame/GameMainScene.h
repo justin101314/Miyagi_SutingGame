@@ -13,6 +13,7 @@ private:
 	Player* player;
 	Enemy** enemy;
 	ItemBase** items;
+	//int select_num;
 	
 public:
 
