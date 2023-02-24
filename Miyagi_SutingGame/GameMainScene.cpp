@@ -119,6 +119,9 @@ void GameMainScene::Update() {
 					delete enemy[enemyCount];
 					enemy[enemyCount] = nullptr;
 
+
+
+
 					//”z—ñ‚ð‘O‚É‹l‚ß‚é
 					for (int i = enemyCount + 1; i < 10; i++) {//—áŠOˆ—–h‚®‚½‚ß
 
@@ -130,6 +133,9 @@ void GameMainScene::Update() {
 					}
 
 					enemyCount--;
+
+
+
 					break;
 
 				}
