@@ -253,7 +253,7 @@ AbstractScene* GameMainScene::ChangeScene() {
 	{
 		
 		gameclear = 1;//ƒƒCƒ“‚Ö
-		return dynamic_cast<AbstractScene*> (new GameClear());
+		return dynamic_cast<AbstractScene*> (new (GameClear));
 
 		
 		/*enemy[1] = new Enemy(T_Location{ 1280,5 });*/
