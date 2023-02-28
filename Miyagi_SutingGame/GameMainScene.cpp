@@ -17,13 +17,13 @@ GameMainScene::GameMainScene() {
 	enemy = new Enemy * [10];
 
 	for (int i = 0; i < 10; i++) {
-		
+
 		enemy[i] = nullptr;
 	}
 
 	//下 //エネミー数1体
-	enemy[0] = new Enemy(T_Location{ 640,5 },"../CSVEnemy/CSVEnemy.csv");
-	enemy[1] = new Enemy(T_Location{ 1280,5 },"../CSVEnemy/CSVEnemy.csv");
+	enemy[0] = new Enemy(T_Location{ 640,5 }, "../CSVEnemy/CSVEnemy.csv");
+	//enemy[1] = new Enemy(T_Location{ 1280,5 },"../CSVEnemy/CSVEnemy.csv");
 
 	items = new ItemBase * [10];
 	for (int i = 0; i < 10; i++) {
@@ -34,7 +34,7 @@ GameMainScene::GameMainScene() {
 
 }
 
-int gameclear = 1;//ゲームクリア確認用変数
+
 
 //描画以外の更新を実装
 void GameMainScene::Update() {
@@ -51,8 +51,8 @@ void GameMainScene::Update() {
 		select_num--;
 
 		if (select_num < 0) select_num = 2;
-	}*/
 
+	}*/
 
 	player->Update();
 	int enemyCount;
@@ -80,7 +80,7 @@ void GameMainScene::Update() {
 
 			break;
 		}
-		
+
 		for (int bulletCount = 0; bulletCount < 100; bulletCount++) {
 
 
@@ -102,8 +102,7 @@ void GameMainScene::Update() {
 				//エネミーのHPが0以下だったら、エネミーを削除する
 				if (enemy[enemyCount]->HpCheck()) {
 
-					gameclear = 0;//ゲームクリア用変数に0を代入
-
+					
 					for (int i = 0; i < 10; i++) {
 
 						if (items[i] == nullptr) {
@@ -173,7 +172,7 @@ void GameMainScene::Update() {
 					i--;
 				}
 
-			
+
 			}
 		}
 	}
@@ -241,30 +240,55 @@ void GameMainScene::Draw() const {
 		items[i]->Draw();
 	}
 
+	if (enemy[0] == nullptr) {
+
+		DrawString(640,320,"SHIFTを押して敵を増やす",0xffffff);
+
+
+	}
+
+
 }
 
 //シーン変更処理
 AbstractScene* GameMainScene::ChangeScene() {
 
-	if (player ->LifeCheck()) //HPが0になったら
+	if (player->LifeCheck()) //HPが0になったら
 	{
 		//ゲームオーバーへ
 		return dynamic_cast<AbstractScene*> (new (GameOver));
 
-	
+
 	}
 
 	//ゲームクリア確認が一致したら↓
-	if ( gameclear == 0)
+	if (enemy[0] == nullptr )
 	{
-		
-		gameclear = 1;//メインへ
-		return dynamic_cast<AbstractScene*> (new (GameClear));
+		if (KeyManager::OnKeyClicked(KEY_INPUT_LSHIFT)) {
 
+			if (stagecount == 1) {
+
+				for (int i = 0; i < 10; i++) {
+
+					enemy[i] = nullptr;
+				}
+
+				//下 //エネミー数1体
+				enemy[0] = new Enemy(T_Location{ 640,5 }, "../CSVEnemy/CSVEnemy.csv");
+				enemy[1] = new Enemy(T_Location{ 1280,5 }, "../CSVEnemy/CSVEnemy.csv");
+				enemy[2] = new Enemy(T_Location{ 1280,5 }, "../CSVEnemy/CSVEnemy.csv");
+				stagecount++;
+			}
+			else 
+			{
+				return dynamic_cast<AbstractScene*> (new (GameClear));
+			}
+		}
 		
+
 		/*enemy[1] = new Enemy(T_Location{ 1280,5 });*/
-	
-		
+
+
 	}
 
 	/*switch (_SECOND_STAGE)
