@@ -5,7 +5,6 @@
 #include "GameOver.h"
 #include "GameClear.h"
 
-//#define _SECOND_STAGE 0
 #include "KeyManager.h"
 
 
@@ -39,20 +38,7 @@ GameMainScene::GameMainScene() {
 //描画以外の更新を実装
 void GameMainScene::Update() {
 
-	/*if (KeyManager::OnKeyClicked(KEY_INPUT_RIGHT == true) {
-
-		select_num++;
-
-			if(select_num > 2)select_num = 0;
-	}
-
-	if (KeyManager::OnKeyClicked(KEY_INPUT_LEFT == true) {
-
-		select_num--;
-
-		if (select_num < 0) select_num = 2;
-
-	}*/
+	
 
 	player->Update();
 	int enemyCount;
@@ -242,11 +228,9 @@ void GameMainScene::Draw() const {
 
 	if (enemy[0] == nullptr) {
 
-		DrawString(640,320,"SHIFTを押して敵を増やす",0xffffff);
-
+		DrawString(640,320,"SHIFTを押して次のステージへ",0xffff00);
 
 	}
-
 
 }
 
@@ -257,7 +241,6 @@ AbstractScene* GameMainScene::ChangeScene() {
 	{
 		//ゲームオーバーへ
 		return dynamic_cast<AbstractScene*> (new (GameOver));
-
 
 	}
 
@@ -276,7 +259,7 @@ AbstractScene* GameMainScene::ChangeScene() {
 				//下 //エネミー数1体
 				enemy[0] = new Enemy(T_Location{ 640,5 }, "../CSVEnemy/CSVEnemy.csv");
 				enemy[1] = new Enemy(T_Location{ 1280,5 }, "../CSVEnemy/CSVEnemy.csv");
-				enemy[2] = new Enemy(T_Location{ 1280,5 }, "../CSVEnemy/CSVEnemy.csv");
+				//enemy[2] = new Enemy(T_Location{ 1280,5 }, "../CSVEnemy/CSVEnemy.csv");
 				stagecount++;
 			}
 			else 
@@ -285,20 +268,8 @@ AbstractScene* GameMainScene::ChangeScene() {
 			}
 		}
 		
-
-		/*enemy[1] = new Enemy(T_Location{ 1280,5 });*/
-
-
 	}
 
-	/*switch (_SECOND_STAGE)
-	{
-	case 0:
-		if (KeyManager::OnMouseClicked(KEY_INPUT_2)) { return dynamic_cast <AbstractScene*>(new Scene()); }
-
-	default:
-		break;
-	}*/
 
 
 	return this;

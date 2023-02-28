@@ -13,8 +13,8 @@ private:
 	Player* player;
 	Enemy** enemy;
 	ItemBase** items;
-	//int select_num;
-	int stagecount = 1;
+	
+	int stagecount = 1;//ステージ用変数
 	
 
 public:
