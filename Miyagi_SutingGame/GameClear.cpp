@@ -15,6 +15,7 @@ void GameClear::Update() {
 
 void GameClear::Draw() const {
 
+
 	DrawString(620, 320, "GAMECLEAR", GetColor(255,215,0));
 	DrawString(620, 360, "Z_KEY‚ð‰Ÿ‚µ‚Äƒ^ƒCƒgƒ‹‚Ö", 0xffffff);
 }

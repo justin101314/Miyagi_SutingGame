@@ -84,7 +84,7 @@ void Player::Draw() {
 
 	
 	DrawFormatString(10, 10, GetColor(255, 255, 255), "Life=%d", life);
-	DrawFormatString(10, 40, GetColor(255, 255, 255), "Score=%d", score);
+	DrawFormatString(10, 50, GetColor(255, 255, 255), "Score=%d", score);
 #endif
 
 	

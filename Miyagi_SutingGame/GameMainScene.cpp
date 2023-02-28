@@ -232,7 +232,13 @@ void GameMainScene::Draw() const {
 		DrawString(640,320,"LSHIFTを押して次のステージへ",0xffff00);
 
 	}
-	
+	else if(enemy[0] == nullptr){
+
+
+		DrawString(640, 350, "クリア画面へ", 0xffff00);
+
+	}
+		
 
 }
 
@@ -247,7 +253,7 @@ AbstractScene* GameMainScene::ChangeScene() {
 	}
 
 	//ゲームクリア確認が一致したら↓
-	if (enemy[0] == nullptr )
+	if (enemy[0] == nullptr)
 	{
 		//LSHIFT押されたら
 		if (KeyManager::OnKeyClicked(KEY_INPUT_LSHIFT)) {
@@ -264,11 +270,11 @@ AbstractScene* GameMainScene::ChangeScene() {
 				//下 //エネミー数1体
 				enemy[0] = new Enemy(T_Location{ 640,5 }, "../CSVEnemy/CSVEnemy.csv");
 				enemy[1] = new Enemy(T_Location{ 1280,10 }, "../CSVEnemy/CSVEnemy.csv");
-				enemy[2] = new Enemy(T_Location{ -640,15 }, "../CSVEnemy/CSVEnemy.csv");
+				//enemy[2] = new Enemy(T_Location{ -640,15 }, "../CSVEnemy/CSVEnemy.csv");
 				//ステージに + 1
 				stagecount++;
 			}
-			else 
+			else
 			{
 				return dynamic_cast<AbstractScene*> (new (GameClear));
 			}

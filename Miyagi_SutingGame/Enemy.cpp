@@ -153,7 +153,7 @@ void  Enemy::Update() {
 
 			}
 
-			
+			//ŒÊ‚ğ•`‚­UŒ‚
 			else if (moveInfo[current].attackType == 2) {
 
 				shotNum++;
@@ -161,12 +161,12 @@ void  Enemy::Update() {
 				(GetLocation(), 6.f, (2.f * shotNum));//‹…‚Ì‘¬‚³‰Šú(2.f)
 			}
 
-
+			//è— Œ•Œ^75.f
 			else if (moveInfo[current].attackType == 3) {
 
 				shotNum++;
 				bullets[bulletCount] = new CircleBullet
-				(GetLocation(), 6.f, (75.f * shotNum));//è— Œ•Œ^75.f
+				(GetLocation(), 6.f, (75.f * shotNum));
 
 			}
 
