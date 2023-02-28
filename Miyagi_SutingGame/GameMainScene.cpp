@@ -226,11 +226,13 @@ void GameMainScene::Draw() const {
 		items[i]->Draw();
 	}
 
+	//一体目以外のものと一致したとき
 	if (enemy[0] == nullptr) {
 
-		DrawString(640,320,"SHIFTを押して次のステージへ",0xffff00);
+		DrawString(640,320,"LSHIFTを押して次のステージへ",0xffff00);
 
 	}
+	
 
 }
 
@@ -247,10 +249,13 @@ AbstractScene* GameMainScene::ChangeScene() {
 	//ゲームクリア確認が一致したら↓
 	if (enemy[0] == nullptr )
 	{
+		//LSHIFT押されたら
 		if (KeyManager::OnKeyClicked(KEY_INPUT_LSHIFT)) {
 
+			//次のステージへ
 			if (stagecount == 1) {
 
+				//エネミーを生成
 				for (int i = 0; i < 10; i++) {
 
 					enemy[i] = nullptr;
@@ -258,8 +263,9 @@ AbstractScene* GameMainScene::ChangeScene() {
 
 				//下 //エネミー数1体
 				enemy[0] = new Enemy(T_Location{ 640,5 }, "../CSVEnemy/CSVEnemy.csv");
-				enemy[1] = new Enemy(T_Location{ 1280,5 }, "../CSVEnemy/CSVEnemy.csv");
-				//enemy[2] = new Enemy(T_Location{ 1280,5 }, "../CSVEnemy/CSVEnemy.csv");
+				enemy[1] = new Enemy(T_Location{ 1280,10 }, "../CSVEnemy/CSVEnemy.csv");
+				enemy[2] = new Enemy(T_Location{ -640,15 }, "../CSVEnemy/CSVEnemy.csv");
+				//ステージに + 1
 				stagecount++;
 			}
 			else 
@@ -269,8 +275,6 @@ AbstractScene* GameMainScene::ChangeScene() {
 		}
 		
 	}
-
-
 
 	return this;
 }
